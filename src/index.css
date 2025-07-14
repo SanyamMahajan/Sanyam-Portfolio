@@ -1,0 +1,1106 @@
+@import url("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
+
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+
+
+:root {
+  --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
+  /* Custom variables, originally from your @theme block. */
+  --font-mona-sans: "Mona Sans", sans-serif;
+  --color-white-50: #d9ecff;
+  --color-black-50: #1c1c21;
+  --color-black-100: #0e0e10;
+  --color-black-200: #282732;
+  --color-blue-50: #839cb5;
+  --color-blue-100: #2d2d38;
+}
+
+html,
+body {
+  width: 100dvw;
+  overflow-x: hidden;
+  background-color: black;
+  color: white;
+  scroll-behavior: smooth;
+  font-family: "Mona Sans", sans-serif;
+}
+
+section {
+  width: 100dvw;
+}
+
+/* Custom Utility Classes (originally @layer utilities) */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Custom Component Classes (originally @layer components) */
+.padding-x {
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem; /* px-5 */
+}
+
+.padding-x-lg {
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem; /* px-5 */
+}
+
+.section-padding {
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem; /* px-5 */
+  margin-top: 5rem; /* mt-20 */
+}
+
+.mt-responsive {
+  margin-top: 10rem; /* mt-40 */
+}
+
+/* General Grids */
+.grid-base {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-2-cols {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem; /* gap-6 */
+}
+
+.grid-3-cols {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem; /* gap-6 */
+}
+
+.grid-3-cols-md-tight {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.25rem; /* gap-5 */
+}
+
+.grid-4-cols {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.75rem; /* gap-7 */
+}
+
+.grid-12-cols {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2.5rem; /* gap-10 */
+}
+
+.hero-layout {
+  position: relative;
+  z-index: 10;
+  margin-top: 8rem; /* mt-32 */
+  height: 80vh; /* h-[80vh] */
+  display: flex;
+  align-items: flex-start; /* items-start */
+  justify-content: center;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 30px; /* text-[30px] */
+  font-weight: 600; /* font-semibold */
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hero-text img {
+  width: 2rem; /* size-8 */
+  height: 2rem; /* size-8 */
+  object-fit: contain;
+}
+
+.hero-text .slide {
+  position: absolute;
+  padding-top: 0;
+  padding-left: 0.5rem; /* px-2 */
+  padding-right: 0.5rem; /* px-2 */
+  padding-top: 30px; /* py-[30px] */
+  padding-bottom: 30px; /* py-[30px] */
+  height: 48px; /* h-[48px] */
+  transform: translateY(0); /* translate-y-0 */
+  overflow: hidden;
+}
+
+.hero-badge {
+  background-color: var(--color-black-200); /* bg-black-200 */
+  padding-top: 0.5rem; /* py-2 */
+  padding-bottom: 0.5rem; /* py-2 */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  border-radius: 9999px; /* rounded-full */
+  width: fit-content; /* w-fit */
+  font-size: 0.875rem; /* text-sm */
+  white-space: nowrap; /* text-nowrap */
+}
+
+.hero-3d-layout {
+  width: 100%;
+  height: 100%;
+  min-height: 50vh; /* min-h-[50vh] */
+  position: absolute;
+  top: 6rem; /* top-24 */
+  right: 0;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  left: 50%;
+  padding-top: 1.25rem; /* py-5 */
+  padding-bottom: 1.25rem; /* py-5 */
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem; /* px-5 */
+  transform: translateX(-50%);
+  z-index: 100; /* z-[100] */
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+}
+
+.navbar.scrolled {
+  top: 0;
+  background-color: black;
+}
+
+.navbar.not-scrolled {
+  top: 0;
+  background-color: transparent;
+}
+
+.navbar .inner {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo {
+  color: var(--color-white-50); /* text-white-50 */
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  transition-property: transform;
+  transition-duration: 300ms;
+}
+
+.navbar .logo:hover {
+  transform: scale(1.05); /* hover:scale-105 */
+}
+
+.navbar nav.desktop {
+  display: none; /* hidden */
+  align-items: center;
+}
+
+.navbar nav.desktop ul {
+  display: flex;
+  /* Tailwind's space-x-8 adds margin-left to all children except the first. */
+  /* This is a common pattern for space-x: */
+  /* margin-left: calc(2rem * var(--tw-space-x-reverse)); */
+  /* margin-right: calc(2rem * (1 - var(--tw-space-x-reverse))); */
+  /* Here's a simpler flex gap alternative that often works: */
+  gap: 2rem; /* space-x-8 - using gap as a direct equivalent */
+}
+
+.navbar nav.desktop ul li {
+  color: var(--color-white-50); /* text-white-50 */
+  position: relative;
+}
+
+.navbar nav.desktop ul li span {
+  transition-property: color;
+  transition-duration: 300ms;
+}
+
+.navbar nav.desktop ul li span:hover {
+  color: white;
+}
+
+.navbar nav.desktop ul li .underline {
+  position: absolute;
+  bottom: -0.25rem; /* -bottom-1 */
+  left: 0;
+  width: 0;
+  height: 0.125rem; /* h-0.5 */
+  background-color: white;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+
+.navbar nav.desktop ul li:hover .underline {
+  width: 100%; /* group-hover:w-full */
+}
+
+.navbar .contact-btn {
+  display: flex;
+}
+
+.navbar .contact-btn .inner {
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem; /* px-5 */
+  padding-top: 0.5rem; /* py-2 */
+  padding-bottom: 0.5rem; /* py-2 */
+  border-radius: 0.5rem; /* rounded-lg */
+  background-color: white;
+  color: black;
+  transition-property: background-color;
+  transition-duration: 300ms;
+}
+
+/* Assuming .contact-btn acts as the .group for group-hover effects */
+.navbar .contact-btn:hover .inner {
+  background-color: var(--color-black-50); /* group-hover:bg-black-50 */
+}
+
+.navbar .contact-btn .inner span {
+  transition-property: color;
+  transition-duration: 300ms;
+}
+
+/* Assuming .contact-btn acts as the .group for group-hover effects */
+.navbar .contact-btn:hover .inner span {
+  color: white; /* group-hover:text-white */
+}
+
+.app-showcase {
+  width: 100%;
+  margin-top: 5rem; /* mt-20 */
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem; /* px-5 */
+  padding-top: 2.5rem; /* py-10 */
+  padding-bottom: 2.5rem; /* py-10 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-showcase .showcaselayout {
+  display: flex;
+  flex-direction: column; /* flex-col */
+  gap: 2.5rem; /* gap-10 */
+  justify-content: space-between;
+}
+
+.app-showcase .first-project-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.app-showcase .first-project-wrapper .image-wrapper {
+  height: 24rem; /* h-96 */
+  position: relative;
+}
+
+.app-showcase .first-project-wrapper .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem; /* rounded-xl */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; /* inset-0 */
+}
+
+.app-showcase .first-project-wrapper .text-content {
+  margin-top: 1.25rem; /* mt-5 */
+  /* space-y-5 */
+  /* This means: & > *:not([hidden]) ~ *:not([hidden]) { margin-top: 1.25rem; } */
+  /* For simplicity, if elements are directly stacked, you might apply margin-bottom to children,
+     or use a flexbox gap here if supported by the structure. */
+}
+
+.app-showcase .first-project-wrapper .text-content .badges {
+  display: flex;
+  gap: 0.5rem; /* gap-2 */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.app-showcase .first-project-wrapper .text-content h2 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+}
+
+.app-showcase .project-list-wrapper {
+  display: flex;
+  flex-direction: column; /* flex-col */
+  gap: 2.5rem; /* gap-10 */
+  width: 100%;
+}
+
+.app-showcase .project-list-wrapper .image-wrapper {
+  height: 16rem; /* h-64 */
+  position: relative;
+  border-radius: 0.75rem; /* rounded-xl */
+  padding-top: 0; /* py-0 */
+  padding-bottom: 0; /* py-0 */
+}
+
+.app-showcase .project-list-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0.75rem; /* rounded-xl */
+}
+
+.app-showcase .project-list-wrapper h2 {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600; /* font-semibold */
+  margin-top: 1.25rem; /* mt-5 */
+}
+
+.cta-wrapper {
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.cta-button {
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  padding-top: 1rem; /* py-4 */
+  padding-bottom: 1rem; /* py-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  background-color: var(--color-black-200); /* bg-black-200 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Assuming .cta-button acts as the .group for group-hover effects */
+.cta-button .bg-circle {
+  position: absolute;
+  right: -2.5rem; /* -right-10 */
+  transform-origin: center;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 120%; /* w-[120%] */
+  height: 120%; /* h-[120%] */
+  border-radius: 9999px; /* rounded-full */
+  background-color: var(--color-white-50); /* bg-white-50 */
+  transition-property: all;
+  transition-duration: 500ms;
+}
+
+.cta-button:hover .bg-circle {
+  width: 2.5rem; /* group-hover:size-10 */
+  height: 2.5rem; /* group-hover:size-10 */
+  right: 2.5rem; /* group-hover:right-10 */
+}
+
+.cta-button .text {
+  text-transform: uppercase;
+  font-size: 1rem; /* text-base */
+  color: black;
+  transition-property: all;
+  transition-duration: 500ms;
+  transform: translateX(-1.25rem); /* -translate-x-5 */
+}
+
+.cta-button:hover .text {
+  color: var(--color-white-50); /* group-hover:text-white-50 */
+  transform: translateX(-1.25rem); /* group-hover:-translate-x-5 */
+}
+
+.cta-button .arrow-wrapper {
+  width: 2.5rem; /* size-10 */
+  height: 2.5rem; /* size-10 */
+  border-radius: 9999px; /* rounded-full */
+  position: absolute;
+  right: 2.5rem; /* right-10 */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cta-button:hover .arrow-wrapper {
+  background-color: var(--color-white-50); /* group-hover:bg-white-50 */
+}
+
+.cta-button .arrow-wrapper img {
+  width: 1.25rem; /* size-5 */
+  height: 1.25rem; /* size-5 */
+  transform: translateY(0); /* translate-y-0 */
+  animation: bounce 1s infinite;
+  transition-property: all;
+  transition-duration: 500ms;
+}
+
+.cta-button:hover .arrow-wrapper img {
+  transform: translateY(0); /* group-hover:translate-y-0 */
+}
+
+.card-border {
+  border: 1px solid var(--color-black-50); /* border border-black-50 */
+  background-color: var(--color-black-100); /* bg-black-100 */
+}
+
+/* This .marquee-item is defined in @layer components, and again below.
+   I've resolved the redundancy by keeping the component definition here.
+   The one in the global CSS block will be removed/commented out. */
+.marquee-item {
+  width: 8rem; /* w-32 */
+}
+
+.timeline-wrapper {
+  position: absolute;
+  top: 0;
+  left: 1.25rem; /* left-5 */
+  height: 100%;
+  min-height: 120px;
+  display: flex;
+  justify-content: center;
+}
+
+.timeline {
+  position: absolute;
+  z-index: 30;
+  height: 110%; /* h-[110%] */
+  top: -2.5rem; /* -top-10 */
+  width: 3.5rem; /* w-14 */
+  background-color: black;
+}
+
+.timeline-logo {
+  width: 2.5rem; /* size-10 */
+  height: 2.5rem; /* size-10 */
+  flex-shrink: 0; /* flex-none */
+  border-radius: 9999px; /* rounded-full */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(0); /* translate-y-0 */
+  border: 1px solid var(--color-black-50); /* border border-black-50 */
+  background-color: var(--color-black-100); /* bg-black-100 */
+}
+
+.exp-card-wrapper {
+  display: flex;
+  flex-direction: column-reverse; /* flex-col-reverse */
+  gap: 2.5rem; /* gap-10 */
+  justify-content: space-between;
+}
+
+.gradient-edge {
+  width: 9rem; /* w-36 */
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 20;
+}
+
+.tech-card-animated-bg {
+  position: absolute;
+  left: 0;
+  bottom: -100%; /* bottom-[-100%] */
+  width: 100%;
+  height: 100%;
+  background-color: #2D3240; /* bg-[#2D3240] */
+  transition-property: all;
+  transition-duration: 700ms;
+}
+
+/* Assuming the parent of .tech-card-animated-bg is the .group */
+.group:hover .tech-card-animated-bg {
+  bottom: 0; /* group-hover:bottom-0 */
+}
+
+.tech-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem; /* gap-5 */
+  height: 12.5rem; /* this might be wrong, if not for xl: */
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+/* Assuming the parent of .tech-card-content is the .group */
+.group:hover .tech-card-content {
+  cursor: grab; /* group-hover:cursor-grab */
+}
+
+.tech-card-content p {
+  font-size: 1.125rem; /* text-lg */
+  padding-bottom: 1.25rem; /* pb-5 */
+  font-weight: 600; /* font-semibold */
+  color: var(--color-white-50); /* text-white-50 */
+  text-align: center;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.25rem; /* gap-5 */
+  margin-top: 4rem; /* mt-16 */
+}
+
+.tech-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13rem; /* w-52 */
+  height: 15rem; /* h-60 */
+  position: relative;
+}
+
+form label {
+  display: block;
+  color: var(--color-white-50); /* text-white-50 */
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  padding-top: 1rem; /* py-4 */
+  padding-bottom: 1rem; /* py-4 */
+  font-size: 0.875rem; /* text-sm */
+  background-color: var(--color-blue-100); /* bg-blue-100 */
+  border-radius: 0.375rem; /* rounded-md */
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: var(--color-blue-50); /* placeholder:text-blue-50 */
+}
+
+form a {
+  width: 100%;
+  padding-top: 1rem; /* py-4 */
+  padding-bottom: 1rem; /* py-4 */
+  background-color: white;
+  color: black;
+  font-weight: 600; /* font-semibold */
+  border-radius: 0.375rem; /* rounded-md */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem; /* gap-2 */
+}
+
+form a img {
+  display: inline-block;
+}
+
+.footer {
+  margin-top: 2.5rem; /* my-10 */
+  margin-bottom: 2.5rem; /* my-10 */
+  color: var(--color-white-50); /* text-white-50 */
+  padding-left: 1.25rem; /* px-5 */
+  padding-right: 1.25rem; /* px-5 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer .footer-container {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.25rem; /* gap-5 */
+  width: 100%;
+}
+
+.footer p {
+  text-align: center;
+  cursor: pointer;
+}
+
+.footer .socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem; /* gap-5 */
+}
+
+.footer .socials .icon {
+  border: 1px solid var(--color-black-50); /* border border-black-50 */
+  background-color: var(--color-black-100); /* bg-black-100 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.75rem; /* rounded-xl */
+  width: 2.5rem; /* size-10 */
+  height: 2.5rem; /* size-10 */
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 500ms;
+}
+
+.footer .socials .icon:hover {
+  background-color: var(--color-black-50); /* hover:bg-black-50 */
+}
+
+.footer .socials .icon img {
+  display: inline-block;
+}
+
+/* Hero text slider starts */
+.slide {
+  display: inline-block;
+  flex-direction: column;
+  transition: all cubic-bezier(0.71, 0.03, 0.34, 1);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
+}
+
+@keyframes wordSlider {
+  0% {
+    transform: translateY(0.5%);
+  }
+  12.5% {
+    transform: translateY(-12.5%);
+  }
+  25% {
+    transform: translateY(-25%);
+  }
+  37.5% {
+    transform: translateY(-37.5%);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  62.5% {
+    transform: translateY(-62.5%);
+  }
+  75% {
+    transform: translateY(-75%);
+  }
+  87.5% {
+    transform: translateY(-87.5%);
+  }
+}
+
+/* Hero Text slider ends */
+
+.gradient-line {
+  width: 2px;
+  background: linear-gradient(
+    0deg,
+    rgba(69, 222, 196, 0) 0%,
+    #62e0ff 25%,
+    #52aeff 37.51%,
+    #fd5c79 62.83%,
+    #6d45ce 92.91%
+  );
+}
+
+.gradient-edge:nth-of-type(1) {
+  left: 0;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.gradient-edge:nth-of-type(2) {
+  right: 0;
+  background: linear-gradient(
+    -90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* marquee */
+.marquee {
+  width: 100dvw;
+  overflow: hidden;
+  position: relative;
+}
+.marquee-box {
+  display: flex;
+  align-items: center;
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  animation: marquee 60s linear infinite;
+}
+/* The .marquee-item rule below was a duplicate and has been removed,
+   as it's already defined above (or should be handled by the @apply expansion). */
+/* .marquee-item { float: left; } */
+@keyframes marquee {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+/* marquee end */
+
+.card {
+  --start: 0;
+  position: relative;
+  z-index: 40;
+  overflow: hidden;
+  transition: border-color 1s ease-in-out;
+}
+
+.card::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: var(--gradient);
+  background-attachment: fixed;
+  mask: linear-gradient(#0000, #0000),
+    conic-gradient(
+      from calc((var(--start) - 15) * 1deg),
+      #ffffff1f 0deg,
+      white,
+      #ffffff00 100deg
+    );
+  mask-composite: intersect;
+  mask-clip: padding-box, border-box;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.glow {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(10px);
+  filter: saturate(200);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* --- Responsive Styles --- */
+
+/* Medium devices (md) - min-width: 768px */
+@media (min-width: 768px) {
+  .padding-x {
+    padding-left: 2.5rem; /* md:px-10 */
+    padding-right: 2.5rem; /* md:px-10 */
+  }
+
+  .padding-x-lg {
+    padding-left: 5rem; /* md:px-20 */
+    padding-right: 5rem; /* md:px-20 */
+  }
+
+  .section-padding {
+    padding-left: 2.5rem; /* md:px-10 */
+    padding-right: 2.5rem; /* md:px-10 */
+    margin-top: 10rem; /* md:mt-40 */
+  }
+
+  .mt-responsive {
+    margin-top: 0; /* md:mt-0 */
+  }
+
+  .grid-2-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
+  }
+
+  .grid-3-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
+  }
+
+  .grid-3-cols-md-tight {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* md:grid-cols-3 */
+    gap: 0; /* md:gap-0 */
+  }
+
+  .grid-4-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* md:grid-cols-2 */
+  }
+
+  .hero-layout {
+    height: 100dvh; /* md:h-dvh */
+  }
+
+  .hero-text {
+    font-size: 60px; /* md:text-[60px] */
+  }
+
+  .hero-text img {
+    width: 2.5rem; /* md:size-10 */
+    height: 2.5rem; /* md:size-10 */
+  }
+
+  .hero-text .slide {
+    padding-left: 1.25rem; /* md:px-5 */
+    padding-right: 1.25rem; /* md:px-5 */
+    height: 78px; /* md:h-[78px] */
+    transform: translateY(0.25rem); /* md:translate-y-1 */
+  }
+
+  .hero-badge {
+    font-size: 1rem; /* md:text-base */
+  }
+
+  .navbar {
+    padding-left: 5rem; /* md:px-20 */
+    padding-right: 5rem; /* md:px-20 */
+  }
+
+  .navbar.not-scrolled {
+    top: 2.5rem; /* md:top-10 */
+  }
+
+  .navbar .logo {
+    font-size: 1.5rem; /* md:text-2xl */
+  }
+
+  .navbar nav.desktop {
+    display: none; /* still hidden, will be flex on lg */
+  }
+
+  .app-showcase {
+    padding-left: 5rem; /* md:px-20 */
+    padding-right: 5rem; /* md:px-20 */
+    padding-top: 5rem; /* md:py-20 */
+    padding-bottom: 5rem; /* md:py-20 */
+  }
+
+  .app-showcase .first-project-wrapper .image-wrapper {
+    height: 50vh; /* md:h-[50vh] */
+  }
+
+  .app-showcase .first-project-wrapper .text-content h2 {
+    font-size: 1.875rem; /* md:text-3xl */
+  }
+
+  .app-showcase .project-list-wrapper {
+    flex-direction: row; /* md:flex-row */
+  }
+
+  .app-showcase .project-list-wrapper .image-wrapper {
+    height: 13rem; /* md:h-52 */
+  }
+
+  .app-showcase .project-list-wrapper h2 {
+    font-size: 1.25rem; /* md:text-xl */
+  }
+
+  .cta-button .text {
+    font-size: 1.125rem; /* md:text-lg */
+  }
+
+  .marquee-item {
+    width: 10rem; /* md:w-40 */
+  }
+
+  .timeline-wrapper {
+    left: 2.5rem; /* md:left-10 */
+  }
+
+  .timeline {
+    width: 7rem; /* md:w-28 */
+  }
+
+  .timeline-logo {
+    width: 5rem; /* md:size-20 */
+    height: 5rem; /* md:size-20 */
+    transform: translateY(-1.75rem); /* md:-translate-y-7 */
+  }
+
+  .tech-card-content {
+    justify-content: center; /* md:justify-center */
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* md:grid-cols-3 */
+    gap: 2.5rem; /* md:gap-10 */
+  }
+
+  form input,
+  form textarea {
+    font-size: 1rem; /* md:text-base */
+  }
+
+  .footer {
+    margin-top: 5rem; /* md:mt-20 */
+    padding-left: 5rem; /* md:px-20 */
+    padding-right: 5rem; /* md:px-20 */
+  }
+
+  .footer .footer-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* md:grid-cols-3 */
+    gap: 0; /* md:gap-0 */
+  }
+
+  .footer p {
+    text-align: start; /* md:text-start */
+  }
+
+  .footer .socials .icon {
+    width: 3rem; /* md:size-12 */
+    height: 3rem; /* md:size-12 */
+  }
+}
+
+/* Large devices (lg) - min-width: 1024px */
+@media (min-width: 1024px) {
+  .navbar nav.desktop {
+    display: flex; /* lg:flex */
+  }
+
+  .app-showcase .first-project-wrapper .text-content h2 {
+    font-size: 2.25rem; /* lg:text-4xl */
+  }
+
+  .app-showcase .project-list-wrapper .image-wrapper {
+    height: 18rem; /* lg:h-72 */
+  }
+
+  .app-showcase .project-list-wrapper h2 {
+    font-size: 1.5rem; /* lg:text-2xl */
+  }
+}
+
+/* Extra large devices (xl) - min-width: 1280px */
+@media (min-width: 1280px) {
+  .mt-responsive {
+    margin-top: 5rem; /* xl:mt-20 */
+  }
+
+  .grid-3-cols {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* xl:grid-cols-3 */
+  }
+
+  .grid-4-cols {
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* xl:grid-cols-4 */
+  }
+
+  .grid-12-cols {
+    grid-template-columns: repeat(12, minmax(0, 1fr)); /* xl:grid-cols-12 */
+  }
+
+  .hero-layout {
+    margin-top: 5rem; /* xl:mt-20 */
+    align-items: center; /* xl:items-center */
+  }
+
+  .hero-3d-layout {
+    width: 70%; /* xl:w-[70%] */
+    top: -5rem; /* xl:-top-20 */
+    right: -5rem; /* xl:-right-20 */
+  }
+
+  .cta-button .text {
+    transform: translateX(0); /* xl:translate-x-0 */
+  }
+
+  .cta-button .arrow-wrapper img {
+    transform: translateY(-8rem); /* xl:-translate-y-32 */
+  }
+
+  .timeline-wrapper {
+    left: 35.5vw; /* xl:left-[35.5vw] */
+  }
+
+  .exp-card-wrapper {
+    flex-direction: row; /* xl:flex-row */
+    gap: 5rem; /* xl:gap-20 */
+  }
+
+  .tech-card-content {
+    gap: 1.25rem; /* xl:gap-5 */
+    height: 50vh; /* xl:h-[50vh] */
+  }
+
+  .tech-card-content p {
+    padding-bottom: 0; /* xl:pb-0 */
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)); /* xl:grid-cols-5 */
+    gap: 4rem; /* xl:gap-16 */
+  }
+
+  .app-showcase .showcaselayout {
+    flex-direction: row; /* xl:flex-row */
+  }
+
+  .app-showcase .first-project-wrapper {
+    width: 60%; /* xl:w-[60%] */
+  }
+
+  .app-showcase .first-project-wrapper .image-wrapper {
+    height: 70vh; /* xl:h-[70vh] */
+  }
+
+  .app-showcase .project-list-wrapper {
+    flex-direction: column; /* xl:flex-col */
+    width: 40%; /* xl:w-[40%] */
+  }
+
+  .app-showcase .project-list-wrapper .image-wrapper {
+    height: 37vh; /* xl:h-[37vh] */
+    padding-left: 1.25rem; /* xl:px-5 */
+    padding-right: 1.25rem; /* xl:px-5 */
+  }
+
+  .footer {
+    padding-left: 5rem; /* xl:px-20 */
+    padding-right: 5rem; /* xl:px-20 */
+  }
+}
+
+/* 2XL devices - min-width: 1536px */
+@media (min-width: 1536px) {
+  .app-showcase .project-list-wrapper .image-wrapper {
+    padding-left: 3rem; /* 2xl:px-12 */
+    padding-right: 3rem; /* 2xl:px-12 */
+  }
+
+  .tech-card-content p {
+    font-size: 1.5rem; /* 2xl:text-2xl */
+  }
+}
+
+
+
+
